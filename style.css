@@ -1,0 +1,892 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    font-family: 'Ubuntu', sans-serif;
+    background: #121212;
+    overflow-y: overlay;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 3px;
+}
+
+::-webkit-scrollbar:hover {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 100vh;
+}
+
+::-webkit-scrollbar-track:hover {
+    background: #444;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #999;
+    border-radius: 100vh;
+}
+
+
+
+.header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 50px;
+    position: fixed;
+    background: #121212;
+    z-index: 100;
+    transition: 0.5s;
+}
+
+.header[data-scroll="in"] {
+    padding: 10px 50px;
+    box-shadow: inset -2px -1px 3px rgba(255, 255, 255, 0.3);
+}
+
+.logo {
+    font-size: 45px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+nav {
+    position: relative;
+}
+
+nav .bar {
+    position: absolute;
+    right: 50px;
+    font-size: 25px;
+    margin-top: -10px;
+    cursor: pointer;
+    display: none;
+    z-index: 1000;
+}
+nav .bar .close{
+    display: none;
+}
+nav .bar.active .open{
+    display: none;
+}
+nav .bar.active .close{
+    display: initial;
+}
+
+nav ul {
+    display: flex;
+}
+
+nav ul li {
+    list-style: none;
+    margin: 0 25px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+}
+
+nav ul li:hover a {
+    color: rgba(0, 182, 182);
+}
+
+.home {
+    padding-top: 200px;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.home .text {
+    margin-top: 100px;
+}
+
+.home .text>span {
+    font-size: 20px;
+    letter-spacing: 1px;
+    padding-left: 5px;
+}
+
+.home .text h1 {
+    font-size: 70px;
+    line-height: 95px;
+    letter-spacing: 2px;
+    color: rgba(0, 182, 182);
+}
+
+.home .text h3 {
+    font-size: 35px;
+    letter-spacing: 1px;
+    padding-left: 5px;
+}
+
+.home .text h3 span {
+    color: rgba(0, 182, 182);
+}
+
+.image {
+    width: 400px;
+    height: 520px;
+
+}
+
+.image img {
+    width: 400px;
+    position: absolute;
+    bottom: 0;
+}
+
+.buttons {
+    margin-top: 50px;
+}
+
+.btn {
+    padding: 10px 35px;
+    border-radius: 5px;
+    font-size: 16px;
+    background: transparent;
+    border: 2px solid rgba(0, 182, 182);
+    cursor: pointer;
+    color: rgba(0, 182, 182);
+    transition: 0.3s;
+}
+
+.btn a {
+    text-decoration: none;
+    color: rgba(0, 182, 182);
+    transition: 0.3s;
+}
+
+.btn:hover a {
+    color: #000;
+}
+
+.btn:hover {
+    background: rgba(0, 182, 182);
+    color: #000;
+    transform: scale(1.1);
+}
+
+#about {
+    background: #343434;
+    padding-block: 100px;
+    overflow-x: hidden;
+}
+
+.title {
+    position: relative;
+    height: 30px;
+    margin-bottom: 50px;
+
+}
+
+.title span {
+    display: inline-block;
+    font-size: 30px;
+    padding: 0 10px;
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    z-index: 10;
+}
+
+#about .title span {
+    background: #343434;
+}
+
+.title:before {
+    content: '';
+    width: 300px;
+    height: 3px;
+    background: #fff;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 50%;
+}
+
+#about .container {
+    display: flex;
+    justify-content: center;
+    padding-inline: 100px;
+}
+
+#about .container .img {
+    width: 370px;
+    height: 375px;
+    overflow: hidden;
+    background: #999;
+    margin-right: 50px;
+    transform: translateX(-100px) scale(0.7);
+    opacity: 0;
+    transition: 0.8s;
+    display: flex;
+    border-radius: 10px;
+    justify-content: center;
+}
+
+#about .container .img[data-scroll="in"] {
+    transform: translateX(0px) scale(1);
+    opacity: 1;
+}
+
+#about .container .img img {
+    width: 500px;
+    height: 400px;
+    margin-left: 30px;
+    transform: scaleX(-1);
+}
+
+.aboutText {
+    width: 450px;
+    padding-top: 50px;
+    transform: translateX(100px);
+    opacity: 0;
+    transition: 0.8s;
+}
+
+.aboutText[data-scroll="in"] {
+    transform: translateX(0px);
+    opacity: 1;
+}
+
+
+.container .aboutText h2 {
+    font-size: 25px;
+    letter-spacing: 1px;
+    line-height: 35px;
+    padding: 30px 0;
+}
+
+.container .aboutText h2 span {
+    color: rgba(0, 182, 182);
+}
+
+.container .aboutText p {
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #ccc;
+}
+
+#services {
+    padding: 100px;
+    overflow-x: hidden;
+}
+
+#services .title span {
+    background: #121212;
+}
+
+.serviceBox {
+    display: flex;
+    justify-content: space-around;
+}
+
+.serviceBox .box {
+    width: 350px;
+    border-radius: 10px;
+    background: #232323;
+    padding: 50px 20px;
+    text-align: center;
+    transition: 0.5s;
+    transform: translateY(70px) scale(0.7);
+    opacity: 0;
+    margin: 10px;
+}
+
+.serviceBox .box[data-scroll="in"] {
+    transform: translateX(0px) scale(1);
+    opacity: 1;
+}
+
+.serviceBox .box:hover {
+    background: #333;
+}
+
+.card {
+    transition: 0.5s;
+}
+
+.serviceBox .box:hover .card {
+    transform: scale(1.1);
+}
+
+.card .icon {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.card .icon i {
+    font-size: 50px;
+    color: rgba(0, 182, 182);
+}
+
+.card .text {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.card p {
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: #999;
+}
+
+#skills {
+    background: #343434;
+    padding: 100px;
+    overflow-x: hidden;
+}
+
+#skills .title span {
+    background: #343434;
+}
+
+.skillBox {
+    display: flex;
+    justify-content: center;
+}
+
+.skillBox .left {
+    width: 700px;
+    padding: 30px;
+    transform: translateX(-100px);
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.skillBox .left[data-scroll="in"] {
+    transform: translateX(0px);
+    opacity: 1;
+}
+
+.skillBox .left .text {
+    font-size: 30px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.skillBox .left p {
+    font-size: 18px;
+    color: #999;
+    line-height: 25px;
+    letter-spacing: 1px;
+}
+
+.skillBox .right {
+    width: 800px;
+    padding: 20px 70px 0;
+    transform: translateX(100px);
+    opacity: 0;
+    transition: 0.5s
+}
+
+.skillBox .right[data-scroll="in"] {
+    transform: translateX(0px);
+    opacity: 1;
+}
+
+.skillBox .right .progress {
+    margin-bottom: 30px;
+}
+
+.skillBox .right .progress .info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.skillBox .right .progress .info span {
+    font-size: 18px;
+
+}
+
+.skillBox .right .progress .range {
+    width: 100%;
+    height: 5px;
+    background-color: #fff;
+    margin-top: 10px;
+    position: relative;
+}
+
+.skillBox .right .progress .range::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    background-color: rgba(0, 182, 182);
+}
+
+.skillBox .right .progress.html .range::before {
+    width: 90%;
+}
+
+.skillBox .right .progress.css .range::before {
+    width: 70%;
+}
+
+.skillBox .right .progress.js .range::before {
+    width: 60%;
+}
+
+.skillBox .right .progress.python .range::before {
+    width: 50%;
+}
+
+#contact {
+    background: #121212;
+    padding: 100px;
+    overflow-x: hidden;
+}
+
+#contact span {
+    background-color: #121212;
+}
+
+.contactBox {
+    display: flex;
+    justify-content: center;
+}
+
+.contactBox .left {
+    width: 700px;
+    transform: translateX(-100px);
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.contactBox .left[data-scroll="in"] {
+    transform: translateX(0px);
+    opacity: 1;
+}
+
+.contactBox .left span {
+    letter-spacing: 1px;
+    font-size: 25px;
+    line-height: 70px;
+}
+
+.contactBox .left form .genInfo {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contactBox .left form input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #000;
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.contactBox .left form input:focus {
+    outline: none;
+}
+
+.contactBox .left form textarea:focus {
+    outline: none;
+}
+
+.contactBox .left form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    border: 1px solid #000;
+    margin: 10px 0;
+}
+
+.contactBox .right {
+    width: 700px;
+    margin: 0 30px;
+    transform: translateX(100px);
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.contactBox .right[data-scroll="in"] {
+    transform: translateX(0px);
+    opacity: 1;
+}
+
+.contactBox .right span {
+    font-size: 25px;
+    letter-spacing: 1px;
+    line-height: 70px;
+}
+
+.contactBox .right p {
+    font-size: 18px;
+    letter-spacing: 1px;
+    line-height: 25px;
+    color: #999;
+    margin-bottom: 20px;
+}
+
+.infoBox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.infoBox i {
+    font-size: 25px;
+    margin-right: 40px;
+    color: rgba(0, 182, 182);
+}
+
+.infoBox .user div {
+    font-size: 18px;
+    line-height: 30px;
+}
+
+.infoBox .user div:nth-child(2) {
+    color: #aaa;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 50px;
+    align-items: center;
+    box-shadow: 0 -1px 2px rgba(255, 255, 255, 0.2);
+}
+
+.footer .socialIcons a i {
+    font-size: 30px;
+    margin: 0 10px;
+    color: #fff;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.footer .socialIcons a:hover i {
+    transform: translateY(-10px) scale(1.2);
+    color: rgba(0, 182, 182);
+}
+
+.topBtn {
+    width: 45px;
+    height: 45px;
+    border-radius: 5px;
+    background-color: rgba(0, 182, 182);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 60px;
+    right: 50px;
+    cursor: pointer;
+}
+
+.topBtn i {
+    font-size: 25px;
+    color: #fff;
+    text-decoration: none;
+}
+
+@media (max-width:1024px) {
+    .header {
+        padding: 40px 25px;
+    }
+    .header[data-scroll="in"] {
+        padding: 10px 25px;
+    }
+
+    nav ul li {
+        margin: 0 20px;
+    }
+
+    .home .text h1 {
+        font-size: 70px;
+        ;
+    }
+
+    .home .text>span {
+        font-size: 18px;
+    }
+
+    .home .text h3 {
+        font-size: 28px;
+    }
+    #about {
+        padding-block: 50px;
+    }
+
+    #about .container .img {
+        width: 250px;
+        height: 300px;
+    }
+
+    #about .container {
+        padding-inline: 30px;
+    }
+
+    .container .aboutText h2 {
+        font-size: 23px;
+    }
+
+    .container .aboutText p {
+        font-size: 14px;
+    }
+
+    #services {
+        padding: 50px;
+    }
+
+    .serviceBox .box {
+        padding: 30px 20px;
+    }
+
+    .card .text {
+        font-size: 26px;
+    }
+
+    .card p {
+        font-size: 14px;
+    }
+
+    #skills {
+        padding: 50px;
+    }
+
+    .skillBox .right {
+        padding: 20px 40px 0;
+    }
+
+    #contact {
+        padding: 50px;
+    }
+}
+
+@media (max-width:768px) {
+    
+    nav ul{
+        opacity: 0;
+        pointer-events: none;
+        flex-direction: column;
+        position: absolute;
+        align-items: center;
+        z-index: 100;
+        right: -10px;
+        border-radius: 5px;
+        padding: 30px 40px 10px;
+        background: #121212;
+        transition: 0.5s;
+
+    }
+    nav ul.active{
+        opacity: 1;
+        pointer-events: all;
+    }
+    nav ul li{
+        margin: 8px 0;
+    }
+    nav .bar{
+        display: initial;
+        right: 56;
+    }
+
+
+    
+
+    .home .text h1 {
+        font-size: 45px;
+        line-height: 70px;
+    }
+
+    .home .text>span {
+        font-size: 14px;
+    }
+    .home .text h3 {
+        font-size: 23px;
+    }
+    .image {
+        width: 350px;
+        height: 400px;
+    }
+    .image img {
+        width: 300px;
+        position: absolute;
+        bottom: 0;
+    }
+    .home {
+        padding-top: 150px;
+    }
+    #about .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .aboutText {
+        padding-top: 10px;
+    }
+    .serviceBox {
+        flex-wrap: wrap;
+    }
+    .serviceBox .box {
+        width: 275px;
+    }
+    .skillBox .left {
+        padding: 15px;
+    }
+    .skillBox .left .text {
+        font-size: 25px;
+        margin-bottom: 15px;
+    }
+    .skillBox .left p {
+        font-size: 16px;
+    }
+    .skillBox .right .progress .info span {
+        font-size: 16px;
+    }
+    .infoBox {
+        margin-bottom: 15px;
+    }
+    .contactBox .right p {
+        font-size: 16px;
+    }
+    .topBtn {
+        width: 35px;
+        height: 35px;
+        right: 35px;
+    }
+    .topBtn i {
+        font-size: 20px;
+    }
+}
+
+@media (max-width:630px) {
+    .header {
+        padding: 25px 50px;
+    }
+    .header[data-scroll="in"] {
+        padding: 10px 50px;
+    }
+    .logo {
+        font-size: 35px;
+    }
+    nav .bar {
+        right: 35px;
+    }
+    nav ul {
+        flex-direction: column;
+        position: absolute;
+        align-items: center;
+        z-index: 100;
+        right: -30px;
+        border-radius: 5px;
+        padding: 30px 40px 10px;
+        background: #121212;
+    }
+    .home {
+        padding-top: 120px;
+        height: 100vh;
+    }
+    
+    .image {
+        display: none;
+    }
+    .home .text {
+        margin-top: 30px;
+        padding-bottom: 50px;
+    }
+    .aboutText {
+        width: 275px;
+    }
+    #about .container .img {
+        margin-right: 0px;
+    }
+    .container .aboutText h2 {
+        padding: 10px 0;
+    }
+    #skills {
+        padding: 50px 20px;
+    }
+    .skillBox .right {
+        padding: 20px 20px 0;
+    }
+    .left p {
+        font-size: 14px;
+    }
+    .left .text {
+        font-size: 23px;
+    }
+    #contact {
+        padding: 50px 20px;
+    }
+    .contactBox .left span {
+        font-size: 23px;
+        line-height: 55px;
+    }
+    .contactBox .right span {
+        font-size: 23px;
+        line-height: 55px;
+    }
+    .infoBox .user div {
+        font-size: 16px;
+    }
+    .infoBox i {
+        font-size: 23px;
+        margin-right: 25px;
+    }
+    .footer {
+        padding: 10px 20px;;
+    }
+    .footer .socialIcons a i {
+        font-size: 25px;
+        margin: 0 7px;
+    }
+    .footer .copy{
+        font-size: 12px;
+    }
+    .topBtn{
+        bottom: 55px;
+    }
+   
+}
+
+@media (max-width:425px) {
+    nav ul li a {
+        font-size: 14px;
+    }
+    nav .bar {
+        right: 30px;
+    }    
+    .skillBox {
+        flex-wrap: wrap;
+    }
+    .contactBox {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .footer .socialIcons a i {
+        font-size: 20px;
+        margin: 0px 5px;
+    }
+    .title span {
+        font-size: 22px;
+    }
+    .title:before {
+        width: 240px;
+        top: 42%;
+    }
+}
